@@ -19,6 +19,16 @@
 
  - In order to build GWT, `java` and `ant` are required in your system.
 
+ - **Java Version Requirement**: GWT requires Java 11 for building. Using Java 17 or newer will cause compatibility issues with the Error Prone static analysis plugin. To check your Java version, run:
+   ```sh
+   java -version
+   ```
+   
+   If you need to install Java 11:
+   - **macOS**: `brew install openjdk@11`
+   - **Linux**: `sudo apt-get install openjdk-11-jdk` (Ubuntu/Debian) or equivalent for your distribution
+   - **Windows**: Download from [AdoptOpenJDK](https://adoptopenjdk.net/) or [Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+
  - You need the [GWT tools repository](https://github.com/gwtproject/tools/)
    checked out and up-to-date. By default it is expected to be found at `../tools`.
    You can override the default location using the GWT_TOOLS environment variable
