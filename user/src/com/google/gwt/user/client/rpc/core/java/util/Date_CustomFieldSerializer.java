@@ -39,12 +39,17 @@ public final class Date_CustomFieldSerializer extends
 
   public static Date instantiate(SerializationStreamReader streamReader)
       throws SerializationException {
-    return new Date(streamReader.readLong());
+	return new Date(streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt());
   }
 
   public static void serialize(SerializationStreamWriter streamWriter,
       Date instance) throws SerializationException {
-    streamWriter.writeLong(instance.getTime());
+	streamWriter.writeInt(instance.getYear());
+	streamWriter.writeInt(instance.getMonth());
+	streamWriter.writeInt(instance.getDate());
+	streamWriter.writeInt(instance.getHours());
+	streamWriter.writeInt(instance.getMinutes());
+	streamWriter.writeInt(instance.getSeconds());
   }
 
   @Override

@@ -38,12 +38,19 @@ public final class Date_CustomFieldSerializer extends
 
   public static Date instantiate(SerializationStreamReader streamReader)
       throws SerializationException {
-    return new Date(streamReader.readLong());
+	java.util.Date tempDate = new java.util.Date(streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt(),streamReader.readInt());
+    return new Date(tempDate.getTime());
   }
 
   public static void serialize(SerializationStreamWriter streamWriter,
       Date instance) throws SerializationException {
-    streamWriter.writeLong(instance.getTime());
+   	streamWriter.writeInt(instance.getYear());
+	streamWriter.writeInt(instance.getMonth());
+	streamWriter.writeInt(instance.getDate());
+	// java.sql.Date doesn't have time components, so we write 0 for hours, minutes, seconds
+	streamWriter.writeInt(0); // hours
+	streamWriter.writeInt(0); // minutes
+	streamWriter.writeInt(0); // seconds
   }
 
   @Override
