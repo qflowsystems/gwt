@@ -1,13 +1,8 @@
 # Run all tests and builds all aspects of GWT using Java 11, 17, and 21. Runs
-# nightly (plus or minus timzeones) on the main branch, and will also run right
-# away on a push to a release branch. Release zips are uploaded as part of the
-# build, though maven snapshots are not yet deployed.
+# on a push to main or a release branch. Release zips are uploaded as part of
+# the build, though maven snapshots are not yet deployed.
 name: Full build
 on:
-  schedule:
-    # This time is selected to be early in the morning in NA/SA/EU/ME. This
-    # only runs on the default branch.
-    - cron:  '0 6 * * *'
   push:
     # Build on pushes to main and release branches. For forks, the -test may
     # be helpful to run tests when preparing a merge.
